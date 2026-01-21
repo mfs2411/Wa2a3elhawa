@@ -1,0 +1,735 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Official Declaration of Ownership | وقع الهوا</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Great+Vibes&family=Lato:wght@300;400;700&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            font-family: 'Lato', sans-serif;
+            overflow-x: hidden;
+            background: linear-gradient(135deg, #0d0d1a 0%, #1a1a2e 25%, #16213e 50%, #0f3460 75%, #1a1a2e 100%);
+            background-size: 400% 400%;
+            animation: gradientShift 15s ease infinite;
+        }
+
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Star field */
+        .stars {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            overflow: hidden;
+            z-index: 0;
+        }
+
+        .star {
+            position: absolute;
+            width: 3px;
+            height: 3px;
+            background: white;
+            border-radius: 50%;
+            animation: twinkle var(--duration) ease-in-out infinite;
+            opacity: 0;
+        }
+
+        @keyframes twinkle {
+            0%, 100% { opacity: 0; transform: scale(0.5); }
+            50% { opacity: var(--opacity); transform: scale(1); }
+        }
+
+        /* Floating particles */
+        .particle {
+            position: absolute;
+            width: 6px;
+            height: 6px;
+            background: linear-gradient(135deg, #ffd700, #ffecb3);
+            border-radius: 50%;
+            animation: float var(--float-duration) ease-in-out infinite;
+            opacity: 0.6;
+            filter: blur(1px);
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0) translateX(0) rotate(0deg); }
+            25% { transform: translateY(-20px) translateX(10px) rotate(90deg); }
+            50% { transform: translateY(-10px) translateX(-10px) rotate(180deg); }
+            75% { transform: translateY(-30px) translateX(5px) rotate(270deg); }
+        }
+
+        /* Main certificate */
+        .certificate-container {
+            position: relative;
+            z-index: 10;
+            animation: floatIn 1s ease-out;
+        }
+
+        @keyframes floatIn {
+            0% { opacity: 0; transform: translateY(30px) scale(0.95); }
+            100% { opacity: 1; transform: translateY(0) scale(1); }
+        }
+
+        .certificate {
+            background: linear-gradient(145deg, #fef9e7 0%, #fdf5e6 30%, #fff8dc 60%, #fef9e7 100%);
+            border-radius: 8px;
+            padding: 50px 60px;
+            max-width: 700px;
+            width: 100%;
+            position: relative;
+            box-shadow:
+                0 25px 80px rgba(0, 0, 0, 0.5),
+                0 10px 30px rgba(0, 0, 0, 0.3),
+                inset 0 0 100px rgba(255, 215, 0, 0.05);
+            animation: gentleFloat 6s ease-in-out infinite;
+        }
+
+        @keyframes gentleFloat {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        /* Decorative border */
+        .certificate::before {
+            content: '';
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            right: 15px;
+            bottom: 15px;
+            border: 3px double #b8860b;
+            border-radius: 4px;
+            pointer-events: none;
+        }
+
+        .certificate::after {
+            content: '';
+            position: absolute;
+            top: 25px;
+            left: 25px;
+            right: 25px;
+            bottom: 25px;
+            border: 1px solid #daa520;
+            border-radius: 2px;
+            pointer-events: none;
+        }
+
+        /* Corner ornaments */
+        .corner-ornament {
+            position: absolute;
+            width: 40px;
+            height: 40px;
+            opacity: 0.6;
+        }
+
+        .corner-ornament::before,
+        .corner-ornament::after {
+            content: '❧';
+            position: absolute;
+            font-size: 24px;
+            color: #b8860b;
+        }
+
+        .corner-tl { top: 30px; left: 30px; }
+        .corner-tr { top: 30px; right: 30px; transform: scaleX(-1); }
+        .corner-bl { bottom: 30px; left: 30px; transform: scaleY(-1); }
+        .corner-br { bottom: 30px; right: 30px; transform: scale(-1); }
+
+        /* Header */
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .header-icon {
+            font-size: 48px;
+            margin-bottom: 15px;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        .title {
+            font-family: 'Cinzel', serif;
+            font-size: 28px;
+            font-weight: 700;
+            color: #2c1810;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin-bottom: 5px;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+        }
+
+        .subtitle {
+            font-family: 'Cinzel', serif;
+            font-size: 14px;
+            color: #8b4513;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .divider {
+            width: 200px;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #b8860b, transparent);
+            margin: 25px auto;
+        }
+
+        /* Phrase section */
+        .phrase-section {
+            text-align: center;
+            margin: 30px 0;
+            padding: 25px;
+            background: linear-gradient(135deg, rgba(184, 134, 11, 0.1), rgba(218, 165, 32, 0.05));
+            border-radius: 8px;
+            border: 1px solid rgba(184, 134, 11, 0.3);
+        }
+
+        .phrase-label {
+            font-family: 'Cinzel', serif;
+            font-size: 12px;
+            color: #8b4513;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 15px;
+        }
+
+        .phrase-arabic {
+            font-family: 'Amiri', serif;
+            font-size: 48px;
+            color: #2c1810;
+            direction: rtl;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+            animation: glow 3s ease-in-out infinite alternate;
+        }
+
+        @keyframes glow {
+            0% { text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1); }
+            100% { text-shadow: 2px 2px 20px rgba(184, 134, 11, 0.3), 2px 2px 4px rgba(0, 0, 0, 0.1); }
+        }
+
+        .phrase-transliteration {
+            font-family: 'Lato', sans-serif;
+            font-size: 18px;
+            color: #5c4033;
+            font-style: italic;
+            letter-spacing: 1px;
+        }
+
+        /* Declaration text */
+        .declaration {
+            text-align: justify;
+            line-height: 1.9;
+            color: #3c2415;
+            font-size: 15px;
+            margin: 25px 0;
+            padding: 0 10px;
+        }
+
+        .declaration strong {
+            color: #2c1810;
+            font-weight: 700;
+        }
+
+        .owner-name {
+            font-family: 'Cinzel', serif;
+            font-weight: 600;
+            color: #8b4513;
+        }
+
+        .aka {
+            font-style: italic;
+            color: #5c4033;
+        }
+
+        /* Agreement clause */
+        .agreement {
+            background: rgba(139, 69, 19, 0.08);
+            border-left: 4px solid #b8860b;
+            padding: 15px 20px;
+            margin: 25px 0;
+            font-size: 13px;
+            color: #5c4033;
+            font-style: italic;
+            line-height: 1.7;
+        }
+
+        .agreement::before {
+            content: '§';
+            font-size: 20px;
+            color: #b8860b;
+            margin-right: 10px;
+            font-style: normal;
+        }
+
+        /* Seal */
+        .seal-container {
+            position: absolute;
+            bottom: 80px;
+            right: 60px;
+            width: 120px;
+            height: 120px;
+        }
+
+        .seal {
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 30% 30%, #c41e3a, #8b0000);
+            border-radius: 50%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            box-shadow:
+                0 4px 15px rgba(0, 0, 0, 0.4),
+                inset 0 2px 10px rgba(255, 255, 255, 0.2),
+                inset 0 -2px 10px rgba(0, 0, 0, 0.3);
+            transform: rotate(-15deg);
+            animation: sealPulse 4s ease-in-out infinite;
+        }
+
+        @keyframes sealPulse {
+            0%, 100% { transform: rotate(-15deg) scale(1); }
+            50% { transform: rotate(-15deg) scale(1.02); }
+        }
+
+        .seal::before {
+            content: '';
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            border: 2px dashed rgba(255, 215, 0, 0.5);
+            border-radius: 50%;
+        }
+
+        .seal-text {
+            font-family: 'Cinzel', serif;
+            font-size: 10px;
+            color: #ffd700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            text-align: center;
+        }
+
+        .seal-icon {
+            font-size: 28px;
+            margin: 5px 0;
+        }
+
+        /* Signature area */
+        .signature-area {
+            margin-top: 40px;
+            padding-top: 20px;
+        }
+
+        .signature-line {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            max-width: 300px;
+        }
+
+        .signature {
+            font-family: 'Great Vibes', cursive;
+            font-size: 42px;
+            color: #1a1a2e;
+            margin-bottom: 5px;
+            animation: signatureAppear 2s ease-out forwards;
+            opacity: 0;
+            animation-delay: 0.5s;
+        }
+
+        @keyframes signatureAppear {
+            0% { opacity: 0; transform: translateX(-20px); }
+            100% { opacity: 1; transform: translateX(0); }
+        }
+
+        .signature-underline {
+            width: 250px;
+            height: 1px;
+            background: #2c1810;
+            margin-bottom: 8px;
+        }
+
+        .signature-details {
+            font-size: 12px;
+            color: #5c4033;
+        }
+
+        .date {
+            font-family: 'Cinzel', serif;
+            font-size: 13px;
+            color: #8b4513;
+            margin-top: 15px;
+        }
+
+        /* Button */
+        .button-container {
+            text-align: center;
+            margin-top: 35px;
+        }
+
+        .accept-btn {
+            font-family: 'Cinzel', serif;
+            font-size: 16px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            padding: 15px 40px;
+            background: linear-gradient(135deg, #b8860b, #daa520, #b8860b);
+            background-size: 200% 200%;
+            color: #2c1810;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            box-shadow:
+                0 4px 15px rgba(184, 134, 11, 0.4),
+                inset 0 1px 0 rgba(255, 255, 255, 0.3);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .accept-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .accept-btn:hover {
+            transform: translateY(-2px);
+            box-shadow:
+                0 6px 20px rgba(184, 134, 11, 0.5),
+                inset 0 1px 0 rgba(255, 255, 255, 0.3);
+            background-position: 100% 100%;
+        }
+
+        .accept-btn:hover::before {
+            left: 100%;
+        }
+
+        .accept-btn:active {
+            transform: translateY(0);
+        }
+
+        .accept-btn.accepted {
+            background: linear-gradient(135deg, #228b22, #32cd32, #228b22);
+            color: white;
+        }
+
+        /* Confetti canvas */
+        #confetti-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1000;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .certificate {
+                padding: 40px 30px;
+            }
+
+            .title {
+                font-size: 20px;
+                letter-spacing: 1px;
+            }
+
+            .phrase-arabic {
+                font-size: 36px;
+            }
+
+            .seal-container {
+                position: relative;
+                bottom: auto;
+                right: auto;
+                margin: 30px auto 0;
+            }
+
+            .signature-area {
+                text-align: center;
+            }
+
+            .signature-line {
+                align-items: center;
+                max-width: 100%;
+            }
+        }
+
+        /* Success message */
+        .success-message {
+            display: none;
+            text-align: center;
+            padding: 20px;
+            margin-top: 20px;
+            background: rgba(34, 139, 34, 0.1);
+            border-radius: 8px;
+            border: 1px solid rgba(34, 139, 34, 0.3);
+            animation: fadeIn 0.5s ease-out;
+        }
+
+        .success-message.show {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .success-message p {
+            color: #228b22;
+            font-family: 'Cinzel', serif;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Star field background -->
+    <div class="stars" id="stars"></div>
+
+    <!-- Floating particles -->
+    <div class="particles" id="particles"></div>
+
+    <!-- Confetti canvas -->
+    <canvas id="confetti-canvas"></canvas>
+
+    <!-- Certificate -->
+    <div class="certificate-container">
+        <div class="certificate">
+            <!-- Corner ornaments -->
+            <div class="corner-ornament corner-tl"></div>
+            <div class="corner-ornament corner-tr"></div>
+            <div class="corner-ornament corner-bl"></div>
+            <div class="corner-ornament corner-br"></div>
+
+            <!-- Header -->
+            <div class="header">
+                <div class="header-icon">⚖️</div>
+                <h1 class="title">Official Declaration of Ownership</h1>
+                <p class="subtitle">Intellectual Property Registry</p>
+            </div>
+
+            <div class="divider"></div>
+
+            <!-- Phrase -->
+            <div class="phrase-section">
+                <p class="phrase-label">Protected Phrase</p>
+                <p class="phrase-arabic">وقع الهوا</p>
+                <p class="phrase-transliteration">"Wa2a3el Hawa"</p>
+            </div>
+
+            <!-- Declaration -->
+            <div class="declaration">
+                <p>
+                    <strong>LET IT BE KNOWN</strong> to all persons, entities, artificial intelligences, and sentient beings across all dimensions and timelines, that <span class="owner-name">Miriam Fahim</span> <span class="aka">(hereinafter referred to as "MIFA" or "The Undisputed Owner")</span> does hereby claim, assert, and eternally maintain <strong>sole and exclusive ownership</strong> of the phrase <em>"وقع الهوا" (Wa2a3el Hawa)</em>, including but not limited to all variations, transliterations, dramatic whispers, and spontaneous utterances thereof.
+                </p>
+                <br>
+                <p>
+                    This declaration supersedes all prior claims, imagined claims, and claims that exist only in alternate realities. Any unauthorized usage shall result in mandatory acknowledgment of MIFA's brilliance and/or the delivery of one (1) high-quality shawarma to the Owner's location of choice.
+                </p>
+            </div>
+
+            <!-- Agreement clause -->
+            <div class="agreement">
+                <strong>BINDING AGREEMENT:</strong> By viewing this document, scrolling past this section, or even thinking about this phrase while in the same postal code as this webpage, you hereby acknowledge and accept these terms in perpetuity. No takebacks. This is legally binding in the Court of Friendship and the Supreme Tribunal of Inside Jokes.
+            </div>
+
+            <!-- Seal -->
+            <div class="seal-container">
+                <div class="seal">
+                    <span class="seal-text">Officially</span>
+                    <span class="seal-icon">👑</span>
+                    <span class="seal-text">Certified</span>
+                </div>
+            </div>
+
+            <!-- Signature -->
+            <div class="signature-area">
+                <div class="signature-line">
+                    <span class="signature">Miriam Fahim</span>
+                    <div class="signature-underline"></div>
+                    <span class="signature-details">MIFA • Phrase Owner Extraordinaire</span>
+                </div>
+                <p class="date">Executed this <span id="current-date"></span></p>
+            </div>
+
+            <!-- Button -->
+            <div class="button-container">
+                <button class="accept-btn" id="accept-btn">
+                    ✨ I Solemnly Acknowledge ✨
+                </button>
+            </div>
+
+            <!-- Success message -->
+            <div class="success-message" id="success-message">
+                <p>🎉 Your acknowledgment has been recorded in the Eternal Ledger of Phrase Ownership! 🎉</p>
+                <p style="margin-top: 10px; font-size: 12px; color: #5c4033;">MIFA thanks you for your compliance.</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Set current date
+        const dateElement = document.getElementById('current-date');
+        const options = { year: 'numeric', month: 'long', day: 'numeric' };
+        dateElement.textContent = new Date().toLocaleDateString('en-US', options);
+
+        // Generate stars
+        const starsContainer = document.getElementById('stars');
+        for (let i = 0; i < 150; i++) {
+            const star = document.createElement('div');
+            star.className = 'star';
+            star.style.left = Math.random() * 100 + '%';
+            star.style.top = Math.random() * 100 + '%';
+            star.style.setProperty('--duration', (Math.random() * 3 + 2) + 's');
+            star.style.setProperty('--opacity', Math.random() * 0.7 + 0.3);
+            star.style.animationDelay = Math.random() * 5 + 's';
+            starsContainer.appendChild(star);
+        }
+
+        // Generate floating particles
+        const particlesContainer = document.getElementById('particles');
+        for (let i = 0; i < 20; i++) {
+            const particle = document.createElement('div');
+            particle.className = 'particle';
+            particle.style.left = Math.random() * 100 + '%';
+            particle.style.top = Math.random() * 100 + '%';
+            particle.style.setProperty('--float-duration', (Math.random() * 10 + 10) + 's');
+            particle.style.animationDelay = Math.random() * 10 + 's';
+            particlesContainer.appendChild(particle);
+        }
+
+        // Confetti system
+        const canvas = document.getElementById('confetti-canvas');
+        const ctx = canvas.getContext('2d');
+        let confetti = [];
+        let animationId = null;
+
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+        resizeCanvas();
+        window.addEventListener('resize', resizeCanvas);
+
+        class ConfettiPiece {
+            constructor() {
+                this.x = Math.random() * canvas.width;
+                this.y = -20;
+                this.size = Math.random() * 10 + 5;
+                this.speedY = Math.random() * 3 + 2;
+                this.speedX = Math.random() * 4 - 2;
+                this.rotation = Math.random() * 360;
+                this.rotationSpeed = Math.random() * 10 - 5;
+                this.color = ['#ffd700', '#ff6b6b', '#4ecdc4', '#45b7d1', '#96ceb4', '#ffeaa7', '#dfe6e9', '#fd79a8'][Math.floor(Math.random() * 8)];
+                this.shape = Math.random() > 0.5 ? 'rect' : 'circle';
+            }
+
+            update() {
+                this.y += this.speedY;
+                this.x += this.speedX;
+                this.rotation += this.rotationSpeed;
+                this.speedY += 0.05; // gravity
+            }
+
+            draw() {
+                ctx.save();
+                ctx.translate(this.x, this.y);
+                ctx.rotate(this.rotation * Math.PI / 180);
+                ctx.fillStyle = this.color;
+
+                if (this.shape === 'rect') {
+                    ctx.fillRect(-this.size / 2, -this.size / 4, this.size, this.size / 2);
+                } else {
+                    ctx.beginPath();
+                    ctx.arc(0, 0, this.size / 2, 0, Math.PI * 2);
+                    ctx.fill();
+                }
+                ctx.restore();
+            }
+        }
+
+        function launchConfetti() {
+            confetti = [];
+            for (let i = 0; i < 200; i++) {
+                setTimeout(() => {
+                    confetti.push(new ConfettiPiece());
+                }, i * 10);
+            }
+            animateConfetti();
+        }
+
+        function animateConfetti() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            confetti = confetti.filter(piece => piece.y < canvas.height + 50);
+
+            confetti.forEach(piece => {
+                piece.update();
+                piece.draw();
+            });
+
+            if (confetti.length > 0) {
+                animationId = requestAnimationFrame(animateConfetti);
+            }
+        }
+
+        // Button click handler
+        const acceptBtn = document.getElementById('accept-btn');
+        const successMessage = document.getElementById('success-message');
+        let accepted = false;
+
+        acceptBtn.addEventListener('click', function() {
+            if (!accepted) {
+                accepted = true;
+                this.classList.add('accepted');
+                this.innerHTML = '✓ Acknowledged';
+                successMessage.classList.add('show');
+                launchConfetti();
+
+                // Multiple confetti bursts
+                setTimeout(launchConfetti, 500);
+                setTimeout(launchConfetti, 1000);
+            } else {
+                // Easter egg: click again for more confetti
+                launchConfetti();
+            }
+        });
+    </script>
+</body>
+</html>
